@@ -1,0 +1,91 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquid Events | Events</title>
+  <meta name="description" content="Browse past and upcoming Liquid Events experiments.">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&family=Rajdhani:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">
+        <img src="liquidicon.png" alt="Liquid Events logo">
+        <span>Liquid Events</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html" data-transition>Home</a>
+        <a class="active" href="events.html" data-transition>Events</a>
+      </nav>
+      <a class="btn btn-small btn-secondary" href="staff-application.html" data-transition>Apply</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section container section-top">
+      <div class="section-head center">
+        <p class="eyebrow">Events</p>
+        <h1 class="page-title">Past And Upcoming Events</h1>
+        <p class="hero-text center-text">
+          Click any event card to open the full details page.
+        </p>
+      </div>
+
+      <div class="filter-row">
+        <button class="chip chip-active" data-event-filter="all" type="button">All</button>
+        <button class="chip" data-event-filter="past" type="button">Past Events</button>
+        <button class="chip" data-event-filter="upcoming" type="button">Upcoming Events</button>
+      </div>
+    </section>
+
+    <section class="section container" id="pastEventsSection">
+      <div class="section-head">
+        <p class="eyebrow">Past Events</p>
+        <h2>Event Archive</h2>
+      </div>
+
+      <div class="events-grid">
+        <a class="event-card glass" href="event-1-0.html" data-transition>
+          <div class="event-cover">
+            <img src="map.png" alt="Event 1.0 Earth map">
+            <span class="event-tag">Ended</span>
+          </div>
+          <div class="event-body">
+            <h3>Event 1.0 - Earth Experiment</h3>
+            <p>Click to open the full event details page.</p>
+            <p class="event-meta">Status: Completed</p>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <section class="section container" id="upcomingEventsSection">
+      <div class="section-head">
+        <p class="eyebrow">Upcoming Events</p>
+        <h2>Nothing Announced Yet</h2>
+      </div>
+      <div class="glass empty-panel">
+        <p>No upcoming events currently.</p>
+        <p>Check back later or join Discord for announcement pings.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>Liquid Events</p>
+      <p><span id="year"></span> Minecraft Civilization Experiments</p>
+    </div>
+  </footer>
+
+  <script src="site.js"></script>
+</body>
+</html>

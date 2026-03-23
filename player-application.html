@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquid Events | Player Application</title>
+  <meta name="description" content="Player application status for Liquid Events.">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Oxanium:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260323b">
+</head>
+<body>
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">
+        <img src="liquidicon.png" alt="Liquid Events logo">
+        <span>Liquid Events</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html" data-transition>Home</a>
+        <a href="events.html" data-transition>Events</a>
+      </nav>
+      <div class="top-actions">
+        <a class="btn btn-small btn-secondary" href="https://discord.gg/liquidevents" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a class="btn btn-small btn-primary" href="staff-application.html" data-transition>Staff Apply</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section container section-top">
+      <div class="form-shell">
+        <article class="gform-header">
+          <p class="eyebrow">Liquid Events</p>
+          <h1 class="page-title">Player Application</h1>
+          <p class="hero-text">Player applications are currently not open. Start below to check live status.</p>
+        </article>
+
+        <article class="glass gform-intro">
+          <h2>Start Application</h2>
+          <p class="hero-text">When intake opens, this page will route you to the full player form.</p>
+          <button id="playerStartBtn" class="btn btn-primary" type="button">Start Application</button>
+          <p id="playerStartMessage" class="form-message error-message"></p>
+        </article>
+
+        <article class="glass details-card">
+          <h3>Current Intake State</h3>
+          <div class="timeline-list">
+            <div>Player applications are closed until further notice.</div>
+            <div>Announcements for opening windows are posted on Discord.</div>
+            <div>Use the Events page to track active and upcoming seasons.</div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>Liquid Events</p>
+      <p><span id="year"></span> Minecraft Civilization Experiments</p>
+    </div>
+  </footer>
+
+  <script src="site.js?v=20260323b"></script>
+</body>
+</html>

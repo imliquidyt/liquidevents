@@ -1,0 +1,272 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquid Events | Player Application</title>
+  <meta name="description" content="Apply as a player for Event 2.0 on Liquid Events.">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Oxanium:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260324d">
+</head>
+<body>
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">
+        <img src="liquidicon.png" alt="Liquid Events logo">
+        <span>Liquid Events</span>
+      </a>
+      <nav class="nav">
+        <a href="index.html" data-transition>Home</a>
+        <a href="events.html" data-transition>Events</a>
+      </nav>
+      <div class="top-actions">
+        <a class="btn btn-small btn-secondary" href="https://discord.gg/liquidevents" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a class="btn btn-small btn-secondary" href="staff-application.html" data-transition>Staff Apply</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section container section-top">
+      <div class="form-shell">
+        <article class="gform-header">
+          <p class="eyebrow">Liquid Events</p>
+          <h1 class="page-title">Player Application</h1>
+          <p class="hero-text">Player applications are now officially open for Event 2.0.</p>
+        </article>
+
+        <article class="glass gform-intro">
+          <h2>Start Application</h2>
+          <p class="hero-text">Click start to open the full application form.</p>
+          <button id="playerStartBtn" class="btn btn-primary" type="button">Start Application</button>
+          <p id="playerStartMessage" class="form-message"></p>
+        </article>
+
+        <article id="playerFormWrap" class="glass gform-body" hidden>
+          <form id="playerApplicationForm" class="gform-form">
+            <div class="question-card">
+              <label>Minecraft Username
+                <input type="text" name="minecraft_username" required>
+              </label>
+            </div>
+
+            <div class="question-card">
+              <label>Minecraft UUID
+                <input type="text" name="minecraft_uuid" required>
+              </label>
+            </div>
+
+            <div class="question-card">
+              <label>Discord Username (Not Display Name)
+                <input type="text" name="discord_username" required>
+              </label>
+            </div>
+
+            <div class="question-card">
+              <label>Java or Bedrock
+                <select name="edition" required>
+                  <option value="">Select one</option>
+                  <option>Java</option>
+                  <option>Bedrock</option>
+                  <option>Both</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="question-card">
+              <label>Age
+                <input type="number" name="age" min="13" max="99" required>
+              </label>
+            </div>
+
+            <div class="question-card">
+              <label>Enter Your Country
+                <input type="text" name="country" required>
+              </label>
+            </div>
+
+            <div class="question-card">
+              <label>Enter Your Timezone
+                <input type="text" name="timezone" placeholder="e.g. GMT+4" required>
+              </label>
+            </div>
+
+            <div class="question-card">
+              <label class="checkbox-field">
+                <input type="checkbox" name="viewed_schedule" value="Yes, viewed schedule" required>
+                Have you viewed our event schedule?
+              </label>
+              <p class="question-note">
+                Schedule link:
+                <a href="https://www.liquids.events/event-2-0.html" target="_blank" rel="noopener noreferrer">Open Event 2.0 Schedule</a>
+              </p>
+              <div class="timeline-list">
+                <div><strong>May 1 - Day 1</strong> | 7pm-11pm GMT</div>
+                <div><strong>May 2 - Day 2</strong> | 7pm-11pm GMT</div>
+                <div><strong>May 3 - Day 3</strong> | 7pm-11pm GMT</div>
+                <div><strong>May 8 - Day 4</strong> | 7pm-11pm GMT</div>
+                <div><strong>May 9 - Day 5</strong> | 7pm-11pm GMT</div>
+                <div><strong>May 10 - Day 6</strong> | 7pm-11pm GMT</div>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <p>Which days can you make it to?</p>
+              <div class="question-check-grid">
+                <label class="checkbox-field"><input type="checkbox" name="available_days" value="Day 1">Day 1</label>
+                <label class="checkbox-field"><input type="checkbox" name="available_days" value="Day 2">Day 2</label>
+                <label class="checkbox-field"><input type="checkbox" name="available_days" value="Day 3">Day 3</label>
+                <label class="checkbox-field"><input type="checkbox" name="available_days" value="Day 4">Day 4</label>
+                <label class="checkbox-field"><input type="checkbox" name="available_days" value="Day 5">Day 5</label>
+                <label class="checkbox-field"><input type="checkbox" name="available_days" value="Day 6">Day 6</label>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <p>How long can you play per day?</p>
+              <div class="question-check-grid">
+                <label class="checkbox-field"><input type="checkbox" name="session_duration" value="From 7pm GMT to 8pm GMT | 1 hour">From 7pm GMT to 8pm GMT | 1 hour</label>
+                <label class="checkbox-field"><input type="checkbox" name="session_duration" value="From 7pm GMT to 9pm GMT | 2 hours / half session">From 7pm GMT to 9pm GMT | 2 hours / half the session</label>
+                <label class="checkbox-field"><input type="checkbox" name="session_duration" value="From 7pm GMT to 10pm GMT | 3 hours">From 7pm GMT to 10pm GMT | 3 hours</label>
+                <label class="checkbox-field"><input type="checkbox" name="session_duration" value="From 7pm GMT to 11pm GMT | 4 hours">From 7pm GMT to 11pm GMT | 4 hours</label>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <label>Are you able to use Simple VC?
+                <select name="simple_vc" required>
+                  <option value="">Select one</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="question-card">
+              <label>Have you participated in a civilization event before? If so, which ones and what character did you play?
+                <textarea name="civilization_experience" rows="4" required></textarea>
+              </label>
+            </div>
+
+            <div class="question-card">
+              <label>What kind of character are you looking to play?
+                <textarea name="character_type" rows="5" required></textarea>
+              </label>
+              <div class="notice-banner">
+                <p><strong>Guide:</strong> We are not looking for PvP-focused-only applications. We are looking for unique lore-focused ideas like businesses, loyal nation roles, and community mini-events.</p>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <label>What is one major event you hope to create/experience through your lore this event? (Not PvP related)
+                <textarea name="major_lore_event" rows="4" required></textarea>
+              </label>
+            </div>
+
+            <div class="question-card">
+              <label class="checkbox-field">
+                <input type="checkbox" name="absence_acknowledgement" value="Understood and agreed" required>
+                Do you understand you will be permanently removed from the event if you miss a session without creating an absence ticket?
+              </label>
+            </div>
+
+            <div class="question-card">
+              <label>How did you find Liquid Events?
+                <input type="text" name="discovery_source" required>
+              </label>
+            </div>
+
+            <div class="question-card">
+              <label>If you could choose, where would you spawn?
+                <select name="spawn_preference" required>
+                  <option value="">Select one</option>
+                  <option>Atlantis</option>
+                  <option>Aether</option>
+                </select>
+              </label>
+              <div class="notice-banner">
+                <p><strong>Warning:</strong> Spawn location is always random. This question is only to get your opinion.</p>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <label>Why should we accept you instead of other applicants?
+                <textarea name="acceptance_reason" rows="4" required></textarea>
+              </label>
+            </div>
+
+            <div class="question-card">
+              <label>What are your plans for bringing lore to the event? (PvP-only plans are not considered lore)
+                <textarea name="lore_plans" rows="4" required></textarea>
+              </label>
+            </div>
+
+            <div class="question-card">
+              <label>Are you willing to follow all event rules strictly and understand rule-breaking can result in a ban?
+                <select name="rules_agreement" required>
+                  <option value="">Select one</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                </select>
+              </label>
+              <div class="notice-banner">
+                <p><strong>Enforcement Notice:</strong> We use advanced anti-cheat and active moderation (including vanish). Rule breakers are permanently removed and blacklisted from future events.</p>
+              </div>
+            </div>
+
+            <div class="question-card">
+              <label>Please link your social media account if you plan to create content on our event.
+                <input type="text" name="social_media_link" placeholder="You can enter N/A if not applicable" required>
+              </label>
+            </div>
+
+            <div class="question-card">
+              <label>If you were elected as a leader, what would be your approach?
+                <textarea name="leader_approach" rows="4" required></textarea>
+              </label>
+            </div>
+
+            <div class="question-card">
+              <label>What would you do if your best friend betrayed you?
+                <textarea name="betrayal_response" rows="4" required></textarea>
+              </label>
+            </div>
+
+            <div class="question-card">
+              <label>Is there anything else you would like to add?
+                <textarea name="extra_notes" rows="4" required></textarea>
+              </label>
+            </div>
+
+            <div class="question-card">
+              <label>What else should we add to the Liquid Events website?
+                <textarea name="website_suggestions" rows="4" required></textarea>
+              </label>
+            </div>
+
+            <div class="submit-row">
+              <button id="playerSubmitBtn" class="btn btn-primary" type="submit">Submit Player Application</button>
+              <p id="playerSubmitMessage" class="form-message"></p>
+            </div>
+          </form>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>Liquid Events</p>
+      <p><span id="year"></span> Minecraft Civilization Experiments</p>
+    </div>
+  </footer>
+
+  <script src="site.js?v=20260324d"></script>
+</body>
+</html>

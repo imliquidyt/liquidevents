@@ -1,0 +1,146 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquid Events | Home</title>
+  <meta name="description" content="Apply for staff, check player application status, and browse past and upcoming Liquid Events.">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Oxanium:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260403b">
+</head>
+<body>
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="index.html">
+        <img src="liquidicon.png" alt="Liquid Events logo">
+        <span>Liquid Events</span>
+      </a>
+      <nav class="nav">
+        <a class="active" href="index.html" data-transition>Home</a>
+        <a href="events.html" data-transition>Events</a>
+      </nav>
+      <div class="top-actions">
+        <a class="btn btn-small btn-secondary" href="https://discord.gg/liquidevents" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a class="btn btn-small btn-primary" href="events.html" data-transition>Browse Events</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero hero-home container">
+      <div class="hero-copy">
+        <span class="hero-badge">Ocean Era Network</span>
+        <p class="eyebrow">Minecraft Civilization Events</p>
+        <h1>Apply For <span class="text-gradient">Liquid Events</span></h1>
+        <p class="hero-text">
+          Join the next era as staff, track event announcements, and browse the archive of completed experiments.
+          Event details now live on dedicated pages for cleaner navigation.
+        </p>
+
+        <div class="hero-stats">
+          <span class="hero-stat-pill">Season 1.0 Completed</span>
+          <span class="hero-stat-pill">Event 2.0 Officially Happening</span>
+          <span class="hero-stat-pill">7pm-11pm GMT Sessions</span>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="player-application.html" data-transition>Apply Player</a>
+          <a class="btn btn-secondary" href="staff-application.html" data-transition>Apply Staff</a>
+          <a class="btn btn-secondary" href="events.html" data-transition>Past / Upcoming Events</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section container">
+      <article class="glass status-card">
+        <p class="eyebrow">Live Status</p>
+        <h2>Current Network State</h2>
+        <div class="status-list">
+          <div><strong>Current Event:</strong><span>Ended</span></div>
+          <div><strong>Official Event:</strong><span>Event 2.0 is officially happening (starts May 1)</span></div>
+          <div><strong>Event 2.0 Applications:</strong><span>Open</span></div>
+          <div><strong>Full Details:</strong><span>Events page + event detail pages</span></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section container">
+      <div class="metrics-grid">
+        <article class="glass metric-card">
+          <div class="metric-top">
+            <span class="metric-icon">01</span>
+            <span>Event Archive</span>
+          </div>
+          <p>Every season gets its own isolated detail page with schedule, concept, and media.</p>
+        </article>
+
+        <article class="glass metric-card">
+          <div class="metric-top">
+            <span class="metric-icon">02</span>
+            <span>Staff Queue</span>
+          </div>
+          <p>Staff applications are collected into the protected review panel for admin screening.</p>
+        </article>
+
+        <article class="glass metric-card">
+          <div class="metric-top">
+            <span class="metric-icon">03</span>
+            <span>Discord First</span>
+          </div>
+          <p>Announcements and urgent updates still mirror directly to Discord for immediate reach.</p>
+        </article>
+
+        <article class="glass metric-card">
+          <div class="metric-top">
+            <span class="metric-icon">04</span>
+            <span>Cross Device</span>
+          </div>
+          <p>Applications sync through server storage so admin review works on every browser/device.</p>
+        </article>
+      </div>
+    </section>
+
+    <section id="applications-hub" class="section container applications">
+      <article class="glass app-card">
+        <p class="eyebrow">Player Application</p>
+        <h2>Player Intake</h2>
+        <p class="hero-text">Player applications are now open. Use this page to submit for Event 2.0.</p>
+        <a class="btn btn-primary" href="player-application.html" data-transition>Start Application</a>
+      </article>
+
+      <article class="glass app-card">
+        <p class="eyebrow">Staff Application</p>
+        <h2>Staff Intake</h2>
+        <p class="hero-text">Open the full staff form (Google Forms style), submit once, and route directly into admin review.</p>
+        <a class="btn btn-primary" href="staff-application.html" data-transition>Start Application</a>
+      </article>
+    </section>
+
+    <section class="section container">
+      <article class="glass cta-panel">
+        <div>
+          <p class="eyebrow">Events Hub</p>
+          <h2>View Past And Upcoming Seasons</h2>
+          <p>Only the Events pages contain detailed season breakdowns, thumbnails, schedules, and status.</p>
+        </div>
+        <a class="btn btn-primary" href="events.html" data-transition>Open Events</a>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>Liquid Events</p>
+      <p><span id="year"></span> Minecraft Civilization Experiments</p>
+    </div>
+  </footer>
+
+  <script src="site.js?v=20260403d"></script>
+</body>
+</html>

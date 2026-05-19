@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquid Events | Event 2.0</title>
+  <meta name="description" content="Event 2.0 details for Liquid Events Atlantis vs Aether experiment.">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Oxanium:wght@500;600;700&family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260519d">
+</head>
+<body data-route-page="/event-2-0.html">
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="/#home">
+        <img src="liquidicon.png" alt="Liquid Events logo">
+        <span>Liquid Events</span>
+      </a>
+      <nav class="nav">
+        <a href="/#home" data-transition>Home</a>
+        <a href="/#events" data-transition>Events</a>
+      </nav>
+      <a class="btn btn-small btn-secondary" href="/#events" data-transition>Back To Events</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="section container section-top">
+      <div class="section-head">
+        <p class="eyebrow">Official Event Details</p>
+        <h1 class="page-title">Event 2.0 - Atlantis vs Aether</h1>
+        <p class="hero-text">Two civilizations. Two worlds. This page contains all official details for Event 2.0 only.</p>
+      </div>
+
+      <div class="hero-stats">
+        <span class="status-pill status-pill-confirmed">Officially Happening</span>
+        <span class="status-pill status-pill-confirmed">7pm-10pm GMT Confirmed</span>
+        <span class="status-pill status-pill-confirmed">Player Applications Closed</span>
+      </div>
+
+      <div class="notice-banner">
+        <p><strong>Official update:</strong> Event 2.0 is officially happening. Session dates and timings are confirmed.</p>
+      </div>
+    </section>
+
+    <section class="section container details-layout">
+      <article class="glass details-card">
+        <h2>Concept</h2>
+        <ul class="check-list">
+          <li><strong>Atlantis:</strong> starts in an underwater dimension with water breathing enabled.</li>
+          <li>Atlantis players can explore custom ocean biomes and structures.</li>
+          <li>Atlantis cannot leave the ocean dimension until Day 4.</li>
+          <li><strong>Aether:</strong> starts in a sky dimension inspired by Aether-style gameplay.</li>
+          <li>Aether players explore floating islands, custom biomes, and structures.</li>
+        </ul>
+      </article>
+
+      <article class="glass details-card">
+        <h2>Event Thumbnail</h2>
+        <p class="hero-text">Current visual for Event 2.0:</p>
+        <img class="details-map" src="event2.png" alt="Event 2.0 Atlantis vs Aether thumbnail">
+      </article>
+    </section>
+
+    <section class="section container">
+      <article class="glass details-card">
+        <h2>Day 4 Crossover</h2>
+        <div class="timeline-list">
+          <div><strong>The Void opens on Day 4.</strong></div>
+          <div>Aether players can descend through the Void to enter Atlantis.</div>
+          <div>Atlantis players can build upward to reach the Aether.</div>
+          <div>Day 4 begins the first cross-dimension conflict window.</div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section container">
+      <article class="glass details-card">
+        <h2>Confirmed Session Schedule</h2>
+        <p class="hero-text">All dates below are confirmed. Each session runs from 7pm to 10pm GMT.</p>
+        <div class="timeline-list">
+          <div><strong>May 1 - Day 1</strong> | 7pm-10pm GMT (confirmed)</div>
+          <div><strong>May 2 - Day 2</strong> | 7pm-10pm GMT (confirmed)</div>
+          <div><strong>May 3 - Day 3</strong> | 7pm-10pm GMT (confirmed)</div>
+          <div><strong>May 8 - Day 4</strong> | 7pm-10pm GMT (confirmed)</div>
+          <div><strong>May 9 - Day 5</strong> | 7pm-10pm GMT (confirmed)</div>
+          <div><strong>May 10 - Day 6</strong> | 7pm-10pm GMT (confirmed)</div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>Liquid Events</p>
+      <p><span id="year"></span> Minecraft Civilization Experiments</p>
+    </div>
+  </footer>
+
+  <script src="site.js?v=20260519d"></script>
+  <script>
+    (function(){
+      function applyTilt(el){
+        el.addEventListener('mousemove',function(e){
+          var r=el.getBoundingClientRect();
+          var x=(e.clientX-r.left)/r.width-.5;
+          var y=(e.clientY-r.top)/r.height-.5;
+          el.style.transform='perspective(700px) rotateY('+x*14+'deg) rotateX('+(-y*14)+'deg) translateZ(12px) translateY(-6px)';
+          el.style.transition='transform 0.08s ease';
+        });
+        el.addEventListener('mouseleave',function(){
+          el.style.transform='';
+          el.style.transition='transform 0.45s ease';
+        });
+      }
+      document.querySelectorAll('.glass').forEach(applyTilt);
+    })();
+  </script>
+</body>
+</html>

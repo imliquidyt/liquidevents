@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="liquidicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquid Events | Player Application</title>
+  <meta name="description" content="Apply as a player for Season 3 on Liquid Events.">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Oxanium:wght@500;600;700&family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260519d">
+</head>
+<body data-route-page="/player-application.html">
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="/#home">
+        <img src="liquidicon.png" alt="Liquid Events logo">
+        <span>Liquid Events</span>
+      </a>
+      <nav class="nav">
+        <a href="https://www.liquidmc.net">Home</a>
+        <a href="/#home" data-transition>Events</a>
+        <a href="https://store.liquidmc.net">Store</a>
+      </nav>
+      <div class="top-actions">
+        <a class="btn btn-small btn-secondary" href="https://discord.gg/liquidmc" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a class="btn btn-small btn-secondary" href="/#staff" data-transition>Staff Apply</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="section container section-top">
+      <div class="form-shell">
+        <article class="gform-header">
+          <p class="eyebrow">Liquid Events</p>
+          <h1 class="page-title">Player Application</h1>
+          <p class="hero-text">Apply to participate as a player in Season 3 of Liquid Events.</p>
+        </article>
+
+        <article class="glass gform-intro">
+          <h2>Season 3 Player Applications</h2>
+          <p class="hero-text">Fill out the form below to apply as a player for Season 3. All questions are required.</p>
+          <button id="playerStartBtn" class="btn btn-primary" type="button">Start Application</button>
+          <p id="playerStartMessage" class="form-message"></p>
+        </article>
+
+        <article id="playerFormWrap" class="glass gform-body" hidden>
+          <form id="playerApplicationForm" class="gform-form">
+            <div class="question-card">
+              <label>Why do you want to join this event?
+                <textarea name="why_join" rows="6" placeholder="Write a detailed paragraph answer..." required></textarea>
+              </label>
+              <p class="question-note">AI detectors will be used on written answers.</p>
+            </div>
+
+            <div class="question-card">
+              <label>Do you have access to the <a href="https://modrinth.com/plugin/simple-voice-chat" target="_blank" rel="noopener noreferrer">Simple VC Mod</a>?
+                <select name="simple_vc" required>
+                  <option value="">Select one</option>
+                  <option>Yes</option>
+                  <option>No</option>
+                  <option>I'm on Bedrock</option>
+                </select>
+              </label>
+            </div>
+
+            <div class="question-card">
+              <p>Have you read all of our guidelines and accepted them?</p>
+              <div class="question-check-grid">
+                <label class="checkbox-field"><input type="radio" name="guidelines_accepted" value="Yes" required>Yes</label>
+                <label class="checkbox-field"><input type="radio" name="guidelines_accepted" value="No" required>No</label>
+              </div>
+            </div>
+
+            <div class="submit-row">
+              <button id="playerSubmitBtn" class="btn btn-primary" type="submit">Submit Player Application</button>
+              <p id="playerSubmitMessage" class="form-message"></p>
+            </div>
+          </form>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>Liquid Events</p>
+      <p><span id="year"></span> Minecraft Civilization Experiments</p>
+    </div>
+  </footer>
+
+  <script src="site.js?v=20260519d"></script>
+</body>
+</html>

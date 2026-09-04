@@ -1,0 +1,206 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="liquidicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquid Events | Home</title>
+  <meta name="description" content="Apply for staff, check player application status, and browse past and upcoming Liquid Events.">
+  <script>document.documentElement.classList.add('js');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Oxanium:wght@500;600;700&family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260519d">
+</head>
+<body data-route-page="/index.html">
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="/#home">
+        <img src="liquidicon.png" alt="Liquid Events logo">
+        <span>Liquid Events</span>
+      </a>
+      <nav class="nav">
+        <a href="https://www.liquidmc.net">Home</a>
+        <a class="active" href="/#home" data-transition>Events</a>
+        <a href="https://store.liquidmc.net">Store</a>
+        <a href="/#admin-hub" id="navAdminHub" data-transition style="display:none">Admin Hub</a>
+      </nav>
+      <div class="top-actions">
+        <a class="btn btn-small btn-secondary" href="https://discord.gg/liquidmc" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a class="btn btn-small btn-primary" href="https://discord.gg/liquidmc" target="_blank" rel="noopener noreferrer">Browse Events</a>
+        <a class="btn btn-small btn-secondary" id="navSignIn" href="/api/discord-auth?action=login" style="display:none">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero-epic">
+      <!-- Particle field -->
+      <div class="hero-particles" aria-hidden="true">
+        <span class="p"></span><span class="p"></span><span class="p"></span><span class="p"></span>
+        <span class="p"></span><span class="p"></span><span class="p"></span><span class="p"></span>
+        <span class="p"></span><span class="p"></span><span class="p"></span><span class="p"></span>
+        <span class="p"></span><span class="p"></span><span class="p"></span><span class="p"></span>
+        <span class="p"></span><span class="p"></span><span class="p"></span><span class="p"></span>
+      </div>
+      <!-- Floating void orbs -->
+      <div class="hero-orb hero-orb-1" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-2" aria-hidden="true"></div>
+      <div class="hero-orb hero-orb-3" aria-hidden="true"></div>
+
+      <div class="container hero-epic-content">
+        <div class="hero-kicker">
+          <span class="hero-live-badge">
+            <span class="live-dot"></span>Ocean Era Network
+          </span>
+          <p class="eyebrow">Minecraft Civilization Events</p>
+        </div>
+
+        <h1 class="hero-title">
+          Step Into The<br>
+          <span class="hero-title-accent">Liquid Events</span>
+        </h1>
+
+        <p class="hero-desc">
+          Join the next era as staff, track event announcements, and browse the archive of completed
+          civilization experiments. Two worlds. One network.
+        </p>
+
+        <div class="hero-stats">
+          <span class="hero-stat-pill">Season 1.0 Completed</span>
+          <span class="hero-stat-pill">Event 2.0 Ended</span>
+          <span class="hero-stat-pill">7pm–10pm GMT Sessions</span>
+        </div>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="/#player" data-transition>Apply as Player</a>
+          <a class="btn btn-secondary" href="/#staff" data-transition>Apply as Staff</a>
+          <a class="btn btn-ghost" href="https://discord.gg/liquidmc" target="_blank" rel="noopener noreferrer">Browse Events</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="container"><div class="divider" aria-hidden="true"></div></div>
+
+    <section class="section container">
+      <article class="glass status-card">
+        <p class="eyebrow">Live Status</p>
+        <h2>Current Network State</h2>
+        <div class="status-list">
+          <div><strong>Current Event:</strong><span>Now</span></div>
+          <div><strong>Official Event Name:</strong><span>Arctic Event</span></div>
+          <div><strong>Application Status:</strong><span>Open</span></div>
+          <div><strong>Full Details:</strong><span>Events page + event detail pages</span></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="section container">
+      <div class="metrics-grid">
+        <article class="glass metric-card">
+          <div class="metric-top">
+            <span class="metric-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="5" x="2" y="3" rx="1"/><path d="M4 8v11a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8"/><path d="M10 12h4"/></svg>
+            </span>
+            <span>Event Archive</span>
+          </div>
+          <p>Every season gets its own isolated detail page with schedule, concept, and media.</p>
+        </article>
+
+        <article class="glass metric-card">
+          <div class="metric-top">
+            <span class="metric-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+            </span>
+            <span>Staff Queue</span>
+          </div>
+          <p>Staff applications are collected into the protected review panel for admin screening.</p>
+        </article>
+
+        <article class="glass metric-card">
+          <div class="metric-top">
+            <span class="metric-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+            </span>
+            <span>Discord First</span>
+          </div>
+          <p>Announcements and urgent updates still mirror directly to Discord for immediate reach.</p>
+        </article>
+
+        <article class="glass metric-card">
+          <div class="metric-top">
+            <span class="metric-icon">
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect width="20" height="14" x="2" y="3" rx="2"/><path d="M8 21h8"/><path d="M12 17v4"/></svg>
+            </span>
+            <span>Cross Device</span>
+          </div>
+          <p>Applications sync through server storage so admin review works on every browser/device.</p>
+        </article>
+      </div>
+    </section>
+
+    <div class="container"><div class="divider" aria-hidden="true"></div></div>
+
+    <section id="applications-hub" class="section container applications">
+      <article class="glass app-card">
+        <p class="eyebrow">Player Application</p>
+        <h2>Player Intake</h2>
+        <p class="hero-text">Season 4 — The Arctic Experiment player applications are now open.</p>
+        <a class="btn btn-primary" href="/#player" data-transition>Apply as Player</a>
+      </article>
+
+      <article class="glass app-card">
+        <p class="eyebrow">Staff Application</p>
+        <h2>Staff Intake</h2>
+        <p class="hero-text">Open the full staff form (Google Forms style), submit once, and route directly into admin review.</p>
+        <a class="btn btn-primary" href="/#staff" data-transition>Start Application</a>
+      </article>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>Liquid Events</p>
+      <p><span id="year"></span> Minecraft Civilization Experiments</p>
+    </div>
+  </footer>
+
+  <script src="site.js?v=20260519d"></script>
+  <script>
+    (function(){
+      function applyTilt(el){
+        el.addEventListener('mousemove',function(e){
+          var r=el.getBoundingClientRect();
+          var x=(e.clientX-r.left)/r.width-.5;
+          var y=(e.clientY-r.top)/r.height-.5;
+          el.style.transform='perspective(700px) rotateY('+x*14+'deg) rotateX('+(-y*14)+'deg) translateZ(12px) translateY(-6px)';
+          el.style.transition='transform 0.08s ease';
+        });
+        el.addEventListener('mouseleave',function(){
+          el.style.transform='';
+          el.style.transition='transform 0.45s ease';
+        });
+      }
+      document.querySelectorAll('.glass').forEach(applyTilt);
+    })();
+  </script>
+  <script>
+    // Reveal Admin Hub nav link for staff members
+    (function(){
+      fetch('/api/discord-guild?action=me',{credentials:'include'})
+        .then(function(r){return r.json();})
+        .then(function(d){
+          if(d.ok && d.isStaff){
+            var el=document.getElementById('navAdminHub');
+            if(el) el.style.display='';
+          }
+        })
+        .catch(function(){});
+    })();
+  </script>
+</body>
+</html>

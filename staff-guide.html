@@ -1,0 +1,1395 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="liquidicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquid Events | Staff Guidebook</title>
+  <meta name="description" content="Official staff guidebook for Liquid Events — internal reference for all staff members.">
+  <script>document.documentElement.classList.add('js');history.replaceState(null,'','/#staff-guide');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Oxanium:wght@500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260519d">
+  <style>
+    /* ---- Staff Guide specific styles ---- */
+
+    /* Auth gate */
+    .guide-gate {
+      min-height: 70vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+    }
+    .guide-gate-card {
+      max-width: 460px;
+      padding: 2.4rem;
+    }
+    .guide-gate-icon {
+      font-size: 3.5rem;
+      display: block;
+      margin-bottom: 1rem;
+      filter: drop-shadow(0 4px 0 rgba(0,0,0,.60));
+    }
+
+    /* Loading spinner */
+    .guide-spinner {
+      width: 48px; height: 48px;
+      border: 4px solid rgba(56,189,248,.20);
+      border-top-color: #38BDF8;
+      border-radius: 50%;
+      animation: guide-spin 0.8s linear infinite;
+      margin: 0 auto 1.2rem;
+    }
+    @keyframes guide-spin { to { transform: rotate(360deg); } }
+
+    /* Guide wrapper (hidden until auth passes) */
+    .guide-wrap { display: none; }
+    .guide-wrap.active { display: block; }
+
+    /* Guide header banner */
+    .guide-banner {
+      background:
+        linear-gradient(135deg, rgba(186,230,253,.14) 0%, rgba(56,189,248,.06) 30%, transparent 50%),
+        linear-gradient(148deg, #031E36, #021628);
+      border: 3px solid rgba(56,189,248,.38);
+      border-radius: 22px;
+      box-shadow: 6px 6px 0 #000C1A, inset 0 1px 0 rgba(186,230,253,.18);
+      padding: 2.4rem 2.8rem;
+      margin-bottom: 2rem;
+      position: relative;
+      overflow: hidden;
+    }
+    .guide-banner::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: repeating-conic-gradient(
+        from 0deg at 50% 120%,
+        transparent 0deg, transparent 2.6deg,
+        rgba(56,189,248,.022) 2.6deg,
+        rgba(56,189,248,.022) 5.2deg
+      );
+      pointer-events: none;
+    }
+    .guide-banner-title {
+      font-family: 'Russo One', 'Oxanium', sans-serif;
+      font-size: clamp(1.8rem, 4vw, 2.8rem);
+      color: #BAE6FD;
+      -webkit-text-stroke: 2px rgba(0,15,40,.85);
+      paint-order: stroke fill;
+      text-shadow: 0 3px 0 rgba(7,89,133,.85), 0 6px 0 rgba(4,60,100,.60);
+      margin: 0 0 .5rem;
+    }
+    .guide-banner-sub {
+      color: rgba(186,230,253,.65);
+      font-size: .95rem;
+      margin: 0;
+    }
+    .guide-banner-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      background: rgba(56,189,248,.14);
+      border: 2px solid rgba(56,189,248,.34);
+      border-radius: 999px;
+      padding: .28rem .85rem;
+      font-size: .78rem;
+      font-weight: 700;
+      color: #7DD3FC;
+      letter-spacing: .08em;
+      margin-bottom: 1rem;
+      box-shadow: 2px 2px 0 #000C1A;
+    }
+
+    /* Section cards */
+    .guide-section {
+      margin-bottom: 1.6rem;
+    }
+    .guide-section-header {
+      display: flex;
+      align-items: center;
+      gap: .7rem;
+      margin-bottom: 1rem;
+    }
+    .guide-section-icon {
+      font-size: 1.6rem;
+      filter: drop-shadow(0 2px 0 rgba(0,0,0,.60));
+      flex-shrink: 0;
+    }
+    .guide-section-title {
+      font-family: 'Oxanium', sans-serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #7DD3FC;
+      -webkit-text-stroke: 1px rgba(0,15,40,.70);
+      paint-order: stroke fill;
+      text-shadow: 0 2px 0 rgba(0,0,0,.60);
+      margin: 0;
+    }
+
+    /* Warning / alert box */
+    .guide-alert {
+      display: flex;
+      align-items: flex-start;
+      gap: .7rem;
+      background: rgba(239,68,68,.12);
+      border: 2px solid rgba(239,68,68,.40);
+      border-radius: 12px;
+      padding: .85rem 1.1rem;
+      margin: .75rem 0;
+      box-shadow: 3px 3px 0 rgba(0,0,0,.45);
+      font-size: .9rem;
+      color: #FCA5A5;
+      font-weight: 600;
+    }
+    .guide-alert-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: .05rem; }
+    .guide-alert.gold {
+      background: rgba(250,204,21,.10);
+      border-color: rgba(250,204,21,.38);
+      color: #FDE68A;
+    }
+
+    /* Bullet lists */
+    .guide-list {
+      list-style: none;
+      padding: 0;
+      margin: .6rem 0;
+      display: flex;
+      flex-direction: column;
+      gap: .35rem;
+    }
+    .guide-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: .55rem;
+      font-size: .92rem;
+      color: rgba(186,230,253,.80);
+      line-height: 1.5;
+    }
+    .guide-list li::before {
+      content: '▸';
+      color: #38BDF8;
+      flex-shrink: 0;
+      font-size: .85rem;
+      margin-top: .05rem;
+      filter: drop-shadow(0 1px 0 rgba(0,0,0,.60));
+    }
+    .guide-list.numbered { counter-reset: guide-num; }
+    .guide-list.numbered li::before {
+      content: counter(guide-num);
+      counter-increment: guide-num;
+      background: #38BDF8;
+      color: #00080F;
+      border-radius: 50%;
+      width: 1.3rem;
+      height: 1.3rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: .72rem;
+      font-weight: 800;
+      flex-shrink: 0;
+      box-shadow: 2px 2px 0 #000C1A;
+    }
+
+    /* Tables */
+    .guide-table-wrap {
+      overflow-x: auto;
+      margin: .75rem 0;
+      border-radius: 14px;
+      border: 2px solid rgba(56,189,248,.28);
+      box-shadow: 4px 4px 0 #000C1A;
+    }
+    .guide-table {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: .88rem;
+    }
+    .guide-table thead tr {
+      background: rgba(56,189,248,.18);
+    }
+    .guide-table th {
+      padding: .65rem 1rem;
+      text-align: left;
+      font-family: 'Oxanium', sans-serif;
+      font-weight: 700;
+      font-size: .82rem;
+      letter-spacing: .07em;
+      color: #BAE6FD;
+      text-transform: uppercase;
+      border-bottom: 2px solid rgba(56,189,248,.28);
+    }
+    .guide-table td {
+      padding: .6rem 1rem;
+      color: rgba(186,230,253,.80);
+      border-bottom: 1px solid rgba(56,189,248,.12);
+      vertical-align: top;
+      line-height: 1.45;
+    }
+    .guide-table tbody tr:last-child td { border-bottom: none; }
+    .guide-table tbody tr:hover { background: rgba(56,189,248,.06); }
+
+    /* Punishment severity chips */
+    .sev-warn  { color: #FCD34D; font-weight: 700; }
+    .sev-ban   { color: #F87171; font-weight: 700; }
+    .sev-perm  { color: #FB923C; font-weight: 700; }
+    .sev-demote{ color: #A78BFA; font-weight: 700; }
+    .sev-remove{ color: #F43F5E; font-weight: 700; }
+    .sev-mute  { color: #38BDF8; font-weight: 700; }
+
+    /* Strike level indicators */
+    .strike-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      background: rgba(239,68,68,.18);
+      border: 2px solid rgba(239,68,68,.38);
+      border-radius: 8px;
+      width: 1.9rem;
+      height: 1.9rem;
+      font-weight: 800;
+      font-size: .85rem;
+      color: #FCA5A5;
+      box-shadow: 2px 2px 0 rgba(0,0,0,.50);
+    }
+
+    /* Rank list for staff hierarchy */
+    .rank-list {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .rank-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .9rem;
+      background: rgba(56,189,248,.06);
+      border: 2px solid rgba(56,189,248,.18);
+      border-radius: 12px;
+      padding: .75rem 1rem;
+      box-shadow: 3px 3px 0 rgba(0,0,0,.40);
+    }
+    .rank-num {
+      font-family: 'Oxanium', sans-serif;
+      font-weight: 800;
+      font-size: 1.1rem;
+      color: #38BDF8;
+      text-shadow: 0 2px 0 rgba(0,0,0,.60);
+      flex-shrink: 0;
+      min-width: 1.6rem;
+    }
+    .rank-details strong {
+      display: block;
+      color: #BAE6FD;
+      font-weight: 700;
+      margin-bottom: .3rem;
+    }
+    .rank-details .guide-list { margin: 0; }
+
+    /* Communication chain */
+    .comm-chain {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: .5rem;
+      margin: .75rem 0;
+    }
+    .comm-node {
+      background: rgba(56,189,248,.14);
+      border: 2px solid rgba(56,189,248,.32);
+      border-radius: 10px;
+      padding: .4rem .9rem;
+      font-weight: 700;
+      font-size: .85rem;
+      color: #7DD3FC;
+      box-shadow: 2px 2px 0 #000C1A;
+      white-space: nowrap;
+    }
+    .comm-arrow {
+      color: #38BDF8;
+      font-size: 1.1rem;
+      font-weight: 700;
+    }
+
+    /* Final statement */
+    .guide-final {
+      background:
+        linear-gradient(135deg, rgba(56,189,248,.10) 0%, transparent 50%),
+        linear-gradient(148deg, #031E36, #021628);
+      border: 3px solid rgba(56,189,248,.38);
+      border-radius: 18px;
+      padding: 2rem 2.4rem;
+      text-align: center;
+      box-shadow: 6px 6px 0 #000C1A;
+      margin-top: 2rem;
+    }
+    .guide-final p {
+      color: rgba(186,230,253,.80);
+      font-size: .95rem;
+      line-height: 1.65;
+      margin: 0 0 .5rem;
+    }
+    .guide-final p:last-child { margin: 0; color: rgba(186,230,253,.50); font-size: .82rem; }
+    .guide-final strong { color: #BAE6FD; }
+
+    /* How-to steps */
+    .step-list {
+      display: flex;
+      flex-direction: column;
+      gap: .5rem;
+    }
+    .step-item {
+      display: flex;
+      align-items: flex-start;
+      gap: .85rem;
+      padding: .7rem 1rem;
+      background: rgba(56,189,248,.05);
+      border-left: 3px solid #38BDF8;
+      border-radius: 0 10px 10px 0;
+      box-shadow: 3px 3px 0 rgba(0,0,0,.35);
+    }
+    .step-num {
+      font-family: 'Oxanium', sans-serif;
+      font-weight: 800;
+      font-size: 1.05rem;
+      color: #38BDF8;
+      flex-shrink: 0;
+      text-shadow: 0 2px 0 rgba(0,0,0,.60);
+    }
+    .step-content strong {
+      display: block;
+      color: #BAE6FD;
+      font-weight: 700;
+      margin-bottom: .25rem;
+      font-size: .92rem;
+    }
+    .step-content .guide-list { margin: 0; }
+
+    /* Ethics code grid */
+    .ethics-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+      gap: .6rem;
+      margin: .6rem 0;
+    }
+    .ethics-item {
+      display: flex;
+      align-items: center;
+      gap: .5rem;
+      background: rgba(56,189,248,.08);
+      border: 2px solid rgba(56,189,248,.22);
+      border-radius: 10px;
+      padding: .5rem .8rem;
+      font-size: .88rem;
+      font-weight: 600;
+      color: #BAE6FD;
+      box-shadow: 2px 2px 0 rgba(0,0,0,.40);
+    }
+    .ethics-item::before {
+      content: '✓';
+      color: #34D399;
+      font-weight: 800;
+      flex-shrink: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      .guide-banner { padding: 1.6rem 1.4rem; }
+      .comm-chain { gap: .3rem; }
+      .comm-node { font-size: .78rem; padding: .3rem .7rem; }
+    }
+
+    /* Sidebar TOC on larger screens */
+    @media (min-width: 1100px) {
+      .guide-layout {
+        display: grid;
+        grid-template-columns: 220px 1fr;
+        gap: 2rem;
+        align-items: start;
+      }
+      .guide-toc {
+        position: sticky;
+        top: 90px;
+      }
+    }
+    .guide-toc {
+      background:
+        linear-gradient(148deg, #031E36, #021628);
+      border: 2px solid rgba(56,189,248,.28);
+      border-radius: 16px;
+      padding: 1.2rem 1rem;
+      box-shadow: 4px 4px 0 #000C1A;
+      margin-bottom: 1.5rem;
+    }
+    .guide-toc-title {
+      font-family: 'Oxanium', sans-serif;
+      font-size: .78rem;
+      font-weight: 700;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: rgba(186,230,253,.55);
+      margin: 0 0 .75rem;
+    }
+    .guide-toc a {
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+      padding: .3rem .4rem;
+      font-size: .82rem;
+      color: rgba(186,230,253,.65);
+      text-decoration: none;
+      border-radius: 7px;
+      transition: background .15s, color .15s;
+    }
+    .guide-toc a:hover {
+      background: rgba(56,189,248,.10);
+      color: #7DD3FC;
+    }
+    .guide-toc a .toc-icon { flex-shrink: 0; font-size: .9rem; }
+  </style>
+</head>
+<body data-route-page="/staff-guide.html">
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="/#home">
+        <img src="liquidicon.png" alt="Liquid Events logo">
+        <span>Liquid Events</span>
+      </a>
+      <nav class="nav">
+        <a href="https://www.liquidmc.net">Home</a>
+        <a href="/#home" data-transition>Events</a>
+        <a href="https://store.liquidmc.net">Store</a>
+        <a href="/#admin-hub" data-transition>Admin Hub</a>
+      </nav>
+      <a class="btn btn-small btn-secondary" href="/#admin-hub" data-transition>← Admin Hub</a>
+    </div>
+  </header>
+
+  <main>
+    <!-- Auth gate (shown while checking / on failure) -->
+    <div class="guide-gate" id="guideGate">
+      <div class="glass guide-gate-card" id="guideGateCard">
+        <div class="guide-spinner" id="guideSpinner"></div>
+        <p class="eyebrow" id="guideGateMsg" style="color:rgba(186,230,253,.60)">Verifying access…</p>
+      </div>
+    </div>
+
+    <!-- Guide content (shown only when staff verified) -->
+    <div class="guide-wrap" id="guideWrap">
+      <section class="section container section-top">
+        <!-- Banner -->
+        <div class="guide-banner">
+          <span class="guide-banner-badge">🔒 Staff Only — Internal Document</span>
+          <h1 class="guide-banner-title">🌍 Official Staff Guidebook</h1>
+          <p class="guide-banner-sub">Liquid Events — This guide is binding for all staff members. Read it. Know it. Follow it.</p>
+        </div>
+
+        <div class="guide-layout">
+          <!-- Table of contents (sidebar on wide screens, inline on mobile) -->
+          <nav class="guide-toc glass" aria-label="Guide sections">
+            <p class="guide-toc-title">Contents</p>
+            <a href="#guide-purpose"><span class="toc-icon">📌</span> Purpose</a>
+            <a href="#guide-ranks"><span class="toc-icon">👥</span> Rank System</a>
+            <a href="#guide-abuse"><span class="toc-icon">🚫</span> Zero Tolerance</a>
+            <a href="#guide-discord"><span class="toc-icon">🖥️</span> Discord Rules</a>
+            <a href="#guide-tickets"><span class="toc-icon">🎫</span> Ticket System</a>
+            <a href="#guide-ingame"><span class="toc-icon">🎮</span> In-Game Rules</a>
+            <a href="#guide-kills"><span class="toc-icon">⚔️</span> Kill Rules</a>
+            <a href="#guide-onelife"><span class="toc-icon">☠️</span> One Life</a>
+            <a href="#guide-fairplay"><span class="toc-icon">🛡️</span> Fair Play</a>
+            <a href="#guide-banneditems"><span class="toc-icon">🚫</span> Banned Items</a>
+            <a href="#guide-content"><span class="toc-icon">📹</span> Content Rules</a>
+            <a href="#guide-roleplay"><span class="toc-icon">🌐</span> Roleplay</a>
+            <a href="#guide-evidence"><span class="toc-icon">📋</span> Evidence</a>
+            <a href="#guide-strikes"><span class="toc-icon">⚠️</span> Strike System</a>
+            <a href="#guide-ethics"><span class="toc-icon">🧠</span> Ethics Code</a>
+            <a href="#guide-emergency"><span class="toc-icon">📢</span> Emergency</a>
+            <a href="#guide-comms"><span class="toc-icon">📞</span> Comms Chain</a>
+            <a href="#guide-logging"><span class="toc-icon">📑</span> Logging</a>
+            <a href="#guide-training"><span class="toc-icon">📘</span> Training</a>
+            <a href="#guide-punishments"><span class="toc-icon">⚖️</span> Punishment Guide</a>
+            <a href="#guide-pro"><span class="toc-icon">🎓</span> Be Professional</a>
+            <a href="#guide-appeals"><span class="toc-icon">📌</span> Appeals</a>
+          </nav>
+
+          <!-- Main content column -->
+          <div class="guide-content">
+
+            <!-- Purpose -->
+            <article class="glass guide-section" id="guide-purpose">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">📌</span>
+                <h2 class="guide-section-title">Purpose of This Guide</h2>
+              </div>
+              <p style="color:rgba(186,230,253,.70);font-size:.92rem;margin:0 0 .75rem">This guide exists to:</p>
+              <ul class="guide-list">
+                <li>Set clear expectations for staff</li>
+                <li>Prevent abuse and favoritism</li>
+                <li>Ensure fairness</li>
+                <li>Protect the integrity of the event</li>
+                <li>Maintain professionalism</li>
+              </ul>
+              <div class="guide-alert gold" style="margin-top:1rem">
+                <span class="guide-alert-icon">⚠️</span>
+                <span>All staff members must follow this guide at all times. Failure to follow it may result in <strong>demotion or permanent removal</strong>.</span>
+              </div>
+            </article>
+
+            <!-- Rank System -->
+            <article class="glass guide-section" id="guide-ranks">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">👥</span>
+                <h2 class="guide-section-title">Staff Rank System</h2>
+              </div>
+              <div class="rank-list">
+                <div class="rank-item">
+                  <span class="rank-num">#1</span>
+                  <div class="rank-details">
+                    <strong>⚡ Management Team</strong>
+                    <ul class="guide-list">
+                      <li>Manage admins and mods</li>
+                      <li>Review punishments</li>
+                      <li>Investigate serious cases</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="rank-item">
+                  <span class="rank-num">#2</span>
+                  <div class="rank-details">
+                    <strong>⚙️ Logistics Team</strong>
+                    <ul class="guide-list">
+                      <li>Organize the Minecraft server</li>
+                      <li>Managing all applications</li>
+                      <li>Configuring plugins and configs</li>
+                      <li>Optimizing the Minecraft server</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="rank-item">
+                  <span class="rank-num">#3</span>
+                  <div class="rank-details">
+                    <strong>🎬 Production Team</strong>
+                    <ul class="guide-list">
+                      <li>Record scenes</li>
+                      <li>Interview players</li>
+                      <li>Handle kill tickets specifically</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="rank-item">
+                  <span class="rank-num">#4</span>
+                  <div class="rank-details">
+                    <strong>🛡️ Moderation Team</strong>
+                    <ul class="guide-list">
+                      <li>Handle tickets</li>
+                      <li>Enforce rules</li>
+                      <li>Monitor gameplay</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+              <div class="guide-alert" style="margin-top:1rem">
+                <span class="guide-alert-icon">⚠️</span>
+                <span>Staff are <strong>NOT allowed to play</strong> in the event.</span>
+              </div>
+            </article>
+
+            <!-- Zero Tolerance -->
+            <article class="glass guide-section" id="guide-abuse">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">🚫</span>
+                <h2 class="guide-section-title">Zero Tolerance: Admin Abuse</h2>
+              </div>
+              <p style="color:rgba(186,230,253,.70);font-size:.92rem;margin:0 0 .75rem">Admin Abuse includes any of the following:</p>
+              <ul class="guide-list" style="columns:2;gap:.35rem">
+                <li>Giving items</li>
+                <li>Placing blocks</li>
+                <li>Removing blocks</li>
+                <li>Teleporting players unfairly</li>
+                <li>Revealing locations</li>
+                <li>Spawning mobs</li>
+                <li>Changing weather/time</li>
+                <li>Editing inventories</li>
+                <li>Warning friends unfairly</li>
+                <li>Ignoring rule breaks</li>
+              </ul>
+              <div class="guide-alert" style="margin-top:.85rem">
+                <span class="guide-alert-icon">🚫</span>
+                <span><strong>NOT EVEN ONE DIRT BLOCK MAY BE PLACED.</strong></span>
+              </div>
+              <p style="color:rgba(186,230,253,.65);font-size:.88rem;margin:.75rem 0 .4rem;font-weight:700">Punishment:</p>
+              <ul class="guide-list">
+                <li><strong>First Offense:</strong> <span class="sev-ban">Immediate Suspension</span></li>
+                <li><strong>Second Offense:</strong> <span class="sev-perm">Permanent Removal + Public Announcement</span></li>
+              </ul>
+            </article>
+
+            <!-- Discord Rules -->
+            <article class="glass guide-section" id="guide-discord">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">🖥️</span>
+                <h2 class="guide-section-title">Discord Staff Rules</h2>
+              </div>
+              <p style="color:rgba(186,230,253,.70);font-size:.88rem;font-weight:700;margin:0 0 .5rem">Required Behavior</p>
+              <ul class="guide-list" style="columns:2">
+                <li>Be respectful</li>
+                <li>Stay professional</li>
+                <li>Speak English only</li>
+                <li>No favoritism</li>
+                <li>No leaking info</li>
+                <li>No arguing publicly</li>
+                <li>No ego power</li>
+              </ul>
+              <p style="color:rgba(186,230,253,.70);font-size:.88rem;font-weight:700;margin:1rem 0 .5rem">Forbidden Actions</p>
+              <div class="guide-table-wrap">
+                <table class="guide-table">
+                  <thead>
+                    <tr><th>Violation</th><th>Punishment</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Harassment</td><td><span class="sev-ban">Instant Demotion/Ban</span></td></tr>
+                    <tr><td>Racism/Slurs</td><td><span class="sev-perm">Permanent Removal</span></td></tr>
+                    <tr><td>Staff Drama</td><td><span class="sev-warn">Warning</span> → <span class="sev-remove">Removal</span></td></tr>
+                    <tr><td>Leaking Info</td><td><span class="sev-remove">Instant Removal</span></td></tr>
+                    <tr><td>Abusing Permissions</td><td><span class="sev-perm">Permanent Ban</span></td></tr>
+                    <tr><td>Ignoring Reports</td><td><span class="sev-warn">Warning</span> → <span class="sev-demote">Demotion</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <!-- Ticket System -->
+            <article class="glass guide-section" id="guide-tickets">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">🎫</span>
+                <h2 class="guide-section-title">Ticket System Rules</h2>
+              </div>
+              <div class="guide-alert gold">
+                <span class="guide-alert-icon">📋</span>
+                <span>All issues <strong>MUST</strong> go through tickets.</span>
+              </div>
+              <p style="color:rgba(186,230,253,.70);font-size:.88rem;font-weight:700;margin:.85rem 0 .5rem">Staff must:</p>
+              <ul class="guide-list">
+                <li>Respond politely</li>
+                <li>Provide evidence</li>
+                <li>Stay neutral</li>
+                <li>Never close tickets unfairly</li>
+              </ul>
+              <p style="color:rgba(186,230,253,.70);font-size:.88rem;font-weight:700;margin:1rem 0 .5rem">Ticket Abuse</p>
+              <div class="guide-table-wrap">
+                <table class="guide-table">
+                  <thead>
+                    <tr><th>Action</th><th>Punishment</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Closing without review</td><td><span class="sev-warn">Warning</span></td></tr>
+                    <tr><td>Favoritism</td><td><span class="sev-demote">Demotion</span></td></tr>
+                    <tr><td>Ignoring tickets</td><td>Strike</td></tr>
+                    <tr><td>Fake rulings</td><td><span class="sev-remove">Removal</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="guide-alert" style="margin-top:.75rem">
+                <span class="guide-alert-icon">⚠️</span>
+                <span><strong>3 Strikes = Removal</strong></span>
+              </div>
+            </article>
+
+            <!-- In-Game Rules -->
+            <article class="glass guide-section" id="guide-ingame">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">🎮</span>
+                <h2 class="guide-section-title">In-Game Staff Rules</h2>
+              </div>
+              <p style="color:rgba(186,230,253,.70);font-size:.88rem;font-weight:700;margin:0 0 .5rem">General Conduct</p>
+              <ul class="guide-list">
+                <li>Stay in Spectator (unless Production)</li>
+                <li>Do not interact with world</li>
+                <li>Do not influence gameplay</li>
+                <li>Record evidence</li>
+                <li>Be invisible in conflicts</li>
+              </ul>
+              <p style="color:rgba(186,230,253,.70);font-size:.88rem;font-weight:700;margin:1rem 0 .5rem">Forbidden In-Game Actions</p>
+              <div class="guide-table-wrap">
+                <table class="guide-table">
+                  <thead>
+                    <tr><th>Action</th><th>Punishment</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Giving items</td><td><span class="sev-remove">Removal</span></td></tr>
+                    <tr><td>Building</td><td><span class="sev-remove">Removal</span></td></tr>
+                    <tr><td>Killing players</td><td><span class="sev-remove">Removal</span></td></tr>
+                    <tr><td>Teleport abuse</td><td><span class="sev-remove">Removal</span></td></tr>
+                    <tr><td>Revealing bases</td><td><span class="sev-remove">Removal</span></td></tr>
+                    <tr><td>Healing players</td><td><span class="sev-remove">Removal</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <!-- Kill Rules -->
+            <article class="glass guide-section" id="guide-kills">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">⚔️</span>
+                <h2 class="guide-section-title">Killing &amp; War Rules</h2>
+              </div>
+              <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem;margin-bottom:1rem">
+                <div>
+                  <p style="color:#34D399;font-size:.85rem;font-weight:700;margin:0 0 .45rem">✅ Valid Kill Reasons</p>
+                  <ul class="guide-list">
+                    <li>Declared War</li>
+                    <li>Self Defense</li>
+                    <li>Lore Assassination</li>
+                    <li>Theft Punishment</li>
+                    <li>Territory Disputes</li>
+                  </ul>
+                </div>
+                <div>
+                  <p style="color:#F87171;font-size:.85rem;font-weight:700;margin:0 0 .45rem">❌ Invalid Kill Reasons</p>
+                  <ul class="guide-list">
+                    <li>Boredom</li>
+                    <li>Looting</li>
+                    <li>Insults</li>
+                    <li>Random Revenge</li>
+                  </ul>
+                </div>
+              </div>
+              <div class="guide-table-wrap">
+                <table class="guide-table">
+                  <thead>
+                    <tr><th>Violation</th><th>Punishment</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>RDM (Random Deathmatch)</td><td><span class="sev-warn">Warning</span> → <span class="sev-ban">Ban</span></td></tr>
+                    <tr><td>No Ticket Kill</td><td><span class="sev-ban">Ban</span></td></tr>
+                    <tr><td>Fake Reason</td><td><span class="sev-ban">Ban</span></td></tr>
+                    <tr><td>Repeated Abuse</td><td><span class="sev-perm">Permanent Ban</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <!-- One Life -->
+            <article class="glass guide-section" id="guide-onelife">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">☠️</span>
+                <h2 class="guide-section-title">One Life System Enforcement</h2>
+              </div>
+              <ul class="guide-list">
+                <li>Death = Out</li>
+                <li>No Revives</li>
+                <li>No Exceptions</li>
+                <li>Staff Interference = <span class="sev-remove">Removal</span></li>
+              </ul>
+            </article>
+
+            <!-- Fair Play -->
+            <article class="glass guide-section" id="guide-fairplay">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">🛡️</span>
+                <h2 class="guide-section-title">Fair Play Rules</h2>
+              </div>
+              <p style="color:rgba(186,230,253,.70);font-size:.88rem;font-weight:700;margin:0 0 .5rem">Prohibited</p>
+              <ul class="guide-list" style="columns:2">
+                <li>X-ray</li>
+                <li>Hack Clients</li>
+                <li>Stream Sniping</li>
+                <li>Combat Logging</li>
+                <li>Exploits</li>
+              </ul>
+              <div class="guide-table-wrap" style="margin-top:.85rem">
+                <table class="guide-table">
+                  <thead>
+                    <tr><th>Cheat Type</th><th>Punishment</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>X-ray</td><td><span class="sev-perm">Permanent Ban</span></td></tr>
+                    <tr><td>Hacks</td><td><span class="sev-perm">Permanent Ban</span></td></tr>
+                    <tr><td>Exploits</td><td><span class="sev-ban">Ban</span></td></tr>
+                    <tr><td>Stream Snipe</td><td><span class="sev-ban">Ban</span></td></tr>
+                    <tr><td>Combat Log</td><td><span class="sev-ban">Ban</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <!-- Banned Items -->
+            <article class="glass guide-section" id="guide-banneditems">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">🚫</span>
+                <h2 class="guide-section-title">Banned Items List</h2>
+              </div>
+              <ul class="guide-list" style="columns:2;margin-bottom:1rem">
+                <li>Ender Pearls</li>
+                <li>Fireworks</li>
+                <li>Enchanting Tables</li>
+                <li>All Enchants</li>
+                <li>Nether/End Items</li>
+                <li>TNT</li>
+                <li>Totems</li>
+                <li>Potions</li>
+                <li>Maces</li>
+                <li>Tridents</li>
+                <li>Crystals</li>
+                <li>Enchanted Apples</li>
+                <li>Netherite</li>
+              </ul>
+              <div class="guide-table-wrap">
+                <table class="guide-table">
+                  <thead>
+                    <tr><th>Possession Amount</th><th>Punishment</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Small</td><td>Confiscation + <span class="sev-warn">Warning</span></td></tr>
+                    <tr><td>Medium</td><td><span class="sev-ban">Temporary Ban</span></td></tr>
+                    <tr><td>Large</td><td><span class="sev-perm">Permanent Ban</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <!-- Content Creation -->
+            <article class="glass guide-section" id="guide-content">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">📹</span>
+                <h2 class="guide-section-title">Content Creation Rules</h2>
+              </div>
+              <ul class="guide-list">
+                <li>Encourage recording</li>
+                <li>No spoiling</li>
+                <li>Respect creators</li>
+                <li>No meta-gaming</li>
+              </ul>
+              <div class="guide-alert" style="margin-top:.75rem">
+                <span class="guide-alert-icon">⚠️</span>
+                <span>Violation = <span class="sev-warn">Warning</span> → <span class="sev-ban">Ban</span></span>
+              </div>
+            </article>
+
+            <!-- Roleplay -->
+            <article class="glass guide-section" id="guide-roleplay">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">🌐</span>
+                <h2 class="guide-section-title">Community Roleplay Rules</h2>
+              </div>
+              <ul class="guide-list">
+                <li>Promote storytelling</li>
+                <li>No K/D farming</li>
+                <li>Encourage diplomacy</li>
+                <li>Respect lore</li>
+              </ul>
+              <div class="guide-alert" style="margin-top:.75rem">
+                <span class="guide-alert-icon">⚠️</span>
+                <span>Breaking RP = <span class="sev-warn">Warning</span> → <span class="sev-ban">Ban</span></span>
+              </div>
+            </article>
+
+            <!-- Evidence Policy -->
+            <article class="glass guide-section" id="guide-evidence">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">📋</span>
+                <h2 class="guide-section-title">Evidence &amp; Logging Policy</h2>
+              </div>
+              <p style="color:rgba(186,230,253,.70);font-size:.88rem;margin:0 0 .6rem">All punishments must include:</p>
+              <ul class="guide-list">
+                <li>Video / Screenshot</li>
+                <li>Date</li>
+                <li>Reason</li>
+                <li>Staff Name</li>
+              </ul>
+              <div class="guide-alert" style="margin-top:.75rem">
+                <span class="guide-alert-icon">🚫</span>
+                <span><strong>No Evidence = No Punishment</strong> · False Logs = <span class="sev-remove">Removal</span></span>
+              </div>
+            </article>
+
+            <!-- Strike System -->
+            <article class="glass guide-section" id="guide-strikes">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">⚠️</span>
+                <h2 class="guide-section-title">Strike System (Staff)</h2>
+              </div>
+              <div class="guide-table-wrap">
+                <table class="guide-table">
+                  <thead>
+                    <tr><th>Level</th><th>Action</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td><span class="strike-badge">1</span></td>
+                      <td><span class="sev-warn">Verbal Warning</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="strike-badge">2</span></td>
+                      <td><span class="sev-warn">Written Warning</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="strike-badge">3</span></td>
+                      <td><span class="sev-demote">Demotion</span></td>
+                    </tr>
+                    <tr>
+                      <td><span class="strike-badge">4</span></td>
+                      <td><span class="sev-remove">Removal</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="guide-alert" style="margin-top:.75rem">
+                <span class="guide-alert-icon">⚠️</span>
+                <span>Severe Abuse = <span class="sev-perm">Instant Removal</span></span>
+              </div>
+            </article>
+
+            <!-- Ethics Code -->
+            <article class="glass guide-section" id="guide-ethics">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">🧠</span>
+                <h2 class="guide-section-title">Staff Ethics Code</h2>
+              </div>
+              <p style="color:rgba(186,230,253,.70);font-size:.88rem;margin:0 0 .75rem">All staff must be:</p>
+              <div class="ethics-grid">
+                <div class="ethics-item">Neutral</div>
+                <div class="ethics-item">Honest</div>
+                <div class="ethics-item">Calm</div>
+                <div class="ethics-item">Patient</div>
+                <div class="ethics-item">Transparent</div>
+                <div class="ethics-item">Mature</div>
+              </div>
+              <div class="guide-alert" style="margin-top:.75rem">
+                <span class="guide-alert-icon">⚠️</span>
+                <span>Breaking ethics = <span class="sev-remove">Removal</span></span>
+              </div>
+            </article>
+
+            <!-- Emergency Protocols -->
+            <article class="glass guide-section" id="guide-emergency">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">📢</span>
+                <h2 class="guide-section-title">Emergency Protocols</h2>
+              </div>
+              <div style="display:flex;flex-direction:column;gap:.65rem">
+                <div>
+                  <p style="color:#FDE68A;font-size:.85rem;font-weight:700;margin:0 0 .35rem">🖥️ Server Crash</p>
+                  <ul class="guide-list">
+                    <li>Notify Managers</li>
+                    <li>Lock server</li>
+                    <li>Save logs</li>
+                  </ul>
+                </div>
+                <div>
+                  <p style="color:#FDE68A;font-size:.85rem;font-weight:700;margin:0 0 .35rem">💣 Major Exploit</p>
+                  <ul class="guide-list">
+                    <li>Freeze affected players</li>
+                    <li>Record proof</li>
+                    <li>Report to Host</li>
+                  </ul>
+                </div>
+                <div>
+                  <p style="color:#FDE68A;font-size:.85rem;font-weight:700;margin:0 0 .35rem">🏴 Raid/Grief</p>
+                  <ul class="guide-list">
+                    <li>Rollback only with approval</li>
+                  </ul>
+                </div>
+              </div>
+            </article>
+
+            <!-- Communication Chain -->
+            <article class="glass guide-section" id="guide-comms">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">📞</span>
+                <h2 class="guide-section-title">Communication Chain</h2>
+              </div>
+              <div class="comm-chain">
+                <span class="comm-node">Helper</span>
+                <span class="comm-arrow">→</span>
+                <span class="comm-node">Mod</span>
+                <span class="comm-arrow">→</span>
+                <span class="comm-node">Admin</span>
+                <span class="comm-arrow">→</span>
+                <span class="comm-node">Manager</span>
+                <span class="comm-arrow">→</span>
+                <span class="comm-node">Host</span>
+              </div>
+              <div class="guide-alert gold" style="margin-top:.75rem">
+                <span class="guide-alert-icon">🚫</span>
+                <span><strong>Do NOT skip ranks.</strong></span>
+              </div>
+            </article>
+
+            <!-- Punishment Logging -->
+            <article class="glass guide-section" id="guide-logging">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">📑</span>
+                <h2 class="guide-section-title">Punishment Logging &amp; Transparency</h2>
+              </div>
+              <p style="color:rgba(186,230,253,.70);font-size:.88rem;margin:0 0 .6rem">All staff members <strong>MUST</strong> log every punishment in <code style="background:rgba(56,189,248,.14);border:1px solid rgba(56,189,248,.28);border-radius:5px;padding:.1em .4em;font-size:.85em;color:#7DD3FC">#punishment-logs</code>. Each log must include:</p>
+              <ul class="guide-list">
+                <li>Player Name</li>
+                <li>Player UUID (if available)</li>
+                <li>Rule Broken</li>
+                <li>Evidence Link</li>
+                <li>Punishment Given</li>
+                <li>Staff Member Name</li>
+                <li>Date &amp; Time</li>
+              </ul>
+              <div class="guide-table-wrap" style="margin-top:.85rem">
+                <table class="guide-table">
+                  <thead>
+                    <tr><th>Violation</th><th>Punishment</th></tr>
+                  </thead>
+                  <tbody>
+                    <tr><td>Missing Log</td><td><span class="sev-warn">Warning</span></td></tr>
+                    <tr><td>Repeated Missing Logs</td><td><span class="sev-demote">Demotion</span></td></tr>
+                    <tr><td>Fake Logs</td><td><span class="sev-remove">Removal</span></td></tr>
+                  </tbody>
+                </table>
+              </div>
+              <div class="guide-alert" style="margin-top:.75rem">
+                <span class="guide-alert-icon">🚫</span>
+                <span><strong>No punishment is valid without being logged.</strong></span>
+              </div>
+            </article>
+
+            <!-- Staff Training -->
+            <article class="glass guide-section" id="guide-training">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">📘</span>
+                <h2 class="guide-section-title">Staff Training: How to Handle Rule Breaks</h2>
+              </div>
+              <div class="step-list">
+                <div class="step-item">
+                  <span class="step-num">1</span>
+                  <div class="step-content">
+                    <strong>Observe</strong>
+                    <ul class="guide-list">
+                      <li>Do NOT act immediately</li>
+                      <li>Watch carefully</li>
+                      <li>Start recording</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <span class="step-num">2</span>
+                  <div class="step-content">
+                    <strong>Collect Evidence</strong>
+                    <ul class="guide-list">
+                      <li>Screenshot or video</li>
+                      <li>Chat logs</li>
+                      <li>Coordinates (if needed)</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <span class="step-num">3</span>
+                  <div class="step-content">
+                    <strong>Verify</strong>
+                    <ul class="guide-list">
+                      <li>Check rules</li>
+                      <li>Confirm violation</li>
+                      <li>Ask higher staff if unsure</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <span class="step-num">4</span>
+                  <div class="step-content">
+                    <strong>Act Fairly</strong>
+                    <ul class="guide-list">
+                      <li>Apply correct punishment</li>
+                      <li>No emotions</li>
+                      <li>No favoritism</li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="step-item">
+                  <span class="step-num">5</span>
+                  <div class="step-content">
+                    <strong>Log</strong>
+                    <ul class="guide-list">
+                      <li>Post in #punishment-logs</li>
+                      <li>Attach proof</li>
+                    </ul>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Standard Punishment Guide -->
+            <article class="glass guide-section" id="guide-punishments">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">⚖️</span>
+                <h2 class="guide-section-title">Standard Player Punishment Guide</h2>
+              </div>
+              <div class="guide-table-wrap">
+                <table class="guide-table">
+                  <thead>
+                    <tr>
+                      <th>Violation</th>
+                      <th>1st Offense</th>
+                      <th>2nd Offense</th>
+                      <th>3rd Offense</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <td>Minor Chat Spam</td>
+                      <td><span class="sev-mute">Mute 15m</span></td>
+                      <td><span class="sev-mute">Mute 1h</span></td>
+                      <td><span class="sev-ban">Temp Ban 1d</span></td>
+                    </tr>
+                    <tr>
+                      <td>Disrespect</td>
+                      <td><span class="sev-warn">Warning</span></td>
+                      <td><span class="sev-mute">Mute 30m</span></td>
+                      <td><span class="sev-ban">Temp Ban 3d</span></td>
+                    </tr>
+                    <tr>
+                      <td>Toxicity</td>
+                      <td><span class="sev-mute">Mute 1h</span></td>
+                      <td><span class="sev-ban">Temp Ban 1d</span></td>
+                      <td><span class="sev-perm">Perm Ban</span></td>
+                    </tr>
+                    <tr>
+                      <td>RDM</td>
+                      <td><span class="sev-warn">Warning</span></td>
+                      <td><span class="sev-ban">Temp Ban 3d</span></td>
+                      <td><span class="sev-perm">Perm Ban</span></td>
+                    </tr>
+                    <tr>
+                      <td>No Ticket Kill</td>
+                      <td><span class="sev-warn">Warning</span></td>
+                      <td><span class="sev-ban">Temp Ban 1d</span></td>
+                      <td><span class="sev-perm">Perm Ban</span></td>
+                    </tr>
+                    <tr>
+                      <td>Combat Logging</td>
+                      <td><span class="sev-ban">Temp Ban 1d</span></td>
+                      <td><span class="sev-ban">Temp Ban 7d</span></td>
+                      <td><span class="sev-perm">Perm Ban</span></td>
+                    </tr>
+                    <tr>
+                      <td>Exploiting</td>
+                      <td><span class="sev-perm">Perm Ban</span></td>
+                      <td>N/A</td>
+                      <td>N/A</td>
+                    </tr>
+                    <tr>
+                      <td>X-ray / Hacks</td>
+                      <td><span class="sev-perm">Perm Ban</span></td>
+                      <td>N/A</td>
+                      <td>N/A</td>
+                    </tr>
+                    <tr>
+                      <td>Banned Items Abuse</td>
+                      <td><span class="sev-ban">Temp Ban 3d</span></td>
+                      <td><span class="sev-perm">Perm Ban</span></td>
+                      <td>N/A</td>
+                    </tr>
+                    <tr>
+                      <td>Impersonating Staff</td>
+                      <td><span class="sev-ban">Temp Ban 1d</span></td>
+                      <td><span class="sev-perm">Perm Ban</span></td>
+                      <td>N/A</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </article>
+
+            <!-- How to be Professional -->
+            <article class="glass guide-section" id="guide-pro">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">🎓</span>
+                <h2 class="guide-section-title">How to Be a Professional Staff Member</h2>
+              </div>
+              <p style="color:rgba(186,230,253,.70);font-size:.88rem;margin:0 0 .6rem">All staff are expected to:</p>
+              <ul class="guide-list">
+                <li>Stay calm in all situations</li>
+                <li>Never argue with players</li>
+                <li>Never insult players</li>
+                <li>Explain rules clearly</li>
+                <li>Give players a chance to understand</li>
+                <li>Be consistent</li>
+                <li>Ask for help when unsure</li>
+                <li>Protect server reputation</li>
+              </ul>
+              <p style="color:#F87171;font-size:.88rem;font-weight:700;margin:1rem 0 .5rem">Things Staff Must NEVER Do</p>
+              <ul class="guide-list">
+                <li>Threaten players</li>
+                <li>Mock players</li>
+                <li>Abuse commands</li>
+                <li>Leak private info</li>
+                <li>Take sides in wars</li>
+                <li>Punish without proof</li>
+                <li>Ignore appeals</li>
+              </ul>
+              <div class="guide-alert" style="margin-top:.75rem">
+                <span class="guide-alert-icon">⚠️</span>
+                <span>Violation = <span class="sev-demote">Demotion</span> or <span class="sev-remove">Removal</span></span>
+              </div>
+            </article>
+
+            <!-- Appeals -->
+            <article class="glass guide-section" id="guide-appeals">
+              <div class="guide-section-header">
+                <span class="guide-section-icon">📌</span>
+                <h2 class="guide-section-title">Appeals &amp; Reviews</h2>
+              </div>
+              <p style="color:rgba(186,230,253,.70);font-size:.88rem;margin:0 0 .6rem">Players may appeal through tickets. Staff must:</p>
+              <ul class="guide-list">
+                <li>Review fairly</li>
+                <li>Re-check evidence</li>
+                <li>Involve managers</li>
+                <li>Update logs if reversed</li>
+              </ul>
+              <div class="guide-alert" style="margin-top:.75rem">
+                <span class="guide-alert-icon">🚫</span>
+                <span>Fake denial of appeals = <span class="sev-remove">Removal</span></span>
+              </div>
+            </article>
+
+            <!-- Final Statement -->
+            <div class="guide-final">
+              <p>❗ <strong>Final Statement</strong></p>
+              <p>This event is built on <strong>fairness</strong>, <strong>entertainment</strong>, and <strong>trust</strong>.<br>
+              If staff abuse happens, the event dies.</p>
+              <p><strong>Zero tolerance means ZERO tolerance.</strong><br>
+              No favoritism. No cheating. No shortcuts.</p>
+              <p>By joining staff, you agree to follow this guide fully.<br>
+              <strong>Failure = Removal.</strong></p>
+              <p>© Liquid Events Staff Team</p>
+            </div>
+
+          </div><!-- /guide-content -->
+        </div><!-- /guide-layout -->
+      </section>
+    </div><!-- /guide-wrap -->
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>Liquid Events</p>
+      <p><span id="year"></span> Minecraft Civilization Experiments</p>
+    </div>
+  </footer>
+
+  <script src="site.js?v=20260519d"></script>
+  <script>
+  (function () {
+    'use strict';
+
+    const gate     = document.getElementById('guideGate');
+    const gateCard = document.getElementById('guideGateCard');
+    const gateMsg  = document.getElementById('guideGateMsg');
+    const spinner  = document.getElementById('guideSpinner');
+    const wrap     = document.getElementById('guideWrap');
+
+    function showGate(icon, title, subtitle, btnHtml) {
+      spinner.style.display = 'none';
+      gateCard.innerHTML = `
+        <span class="guide-gate-icon">${icon}</span>
+        <h2 style="font-family:'Oxanium',sans-serif;font-size:1.5rem;color:#BAE6FD;margin:0 0 .5rem">${title}</h2>
+        <p style="color:rgba(186,230,253,.60);font-size:.9rem;margin:0 0 1.2rem">${subtitle}</p>
+        ${btnHtml}
+      `;
+    }
+
+    function refreshRolesAndRetry() {
+      fetch('/api/discord-auth?action=session&refreshRole=1', { credentials: 'include' })
+        .then(function() { return checkAccess(); })
+        .catch(function() {
+          showGate('⚠️', 'Error', 'Could not refresh roles. Please try again.',
+            `<button class="btn btn-secondary" onclick="location.reload()">Retry</button>`);
+        });
+    }
+
+    var REFRESH_BTN = `<button class="btn btn-secondary" style="margin-top:.6rem" onclick="refreshRolesAndRetry()">🔄 Refresh Roles</button>`;
+
+    function checkAccess() {
+      return fetch('/api/discord-guild?action=me', { credentials: 'include' })
+        .then(r => r.json())
+        .then(data => {
+          if (!data.ok) {
+            if (data.error && data.error.toLowerCase().includes('not authenticated')) {
+              showGate(
+                '🔐',
+                'Login Required',
+                'You must log in with Discord to view the Staff Guidebook.',
+                `<a class="btn btn-primary" href="/api/discord-auth?action=login&returnTo=/%23staff-guide">Login with Discord</a>`
+              );
+            } else {
+              showGate(
+                '🚫',
+                'Access Denied',
+                'This page is restricted to Liquid Events staff members only. If you were just given a role, click Refresh Roles.',
+                REFRESH_BTN
+              );
+            }
+            return;
+          }
+
+          if (!data.isStaff) {
+            showGate(
+              '🚫',
+              'Staff Only',
+              'You do not have a staff role. If you were just given a role in Discord, click Refresh Roles.',
+              REFRESH_BTN
+            );
+            return;
+          }
+
+          gate.style.display = 'none';
+          wrap.classList.add('active');
+          applyTiltToAll();
+        })
+        .catch(() => {
+          showGate(
+            '⚠️',
+            'Connection Error',
+            'Could not verify your access. Please try again.',
+            `<button class="btn btn-secondary" onclick="location.reload()">Retry</button>`
+          );
+        });
+    }
+
+    checkAccess();
+
+    function applyTilt(el) {
+      el.addEventListener('mousemove', function (e) {
+        var r = el.getBoundingClientRect();
+        var x = (e.clientX - r.left) / r.width - 0.5;
+        var y = (e.clientY - r.top) / r.height - 0.5;
+        el.style.transform = 'perspective(700px) rotateY(' + (x * 10) + 'deg) rotateX(' + (-y * 10) + 'deg) translateZ(8px) translateY(-4px)';
+        el.style.transition = 'transform 0.08s ease';
+      });
+      el.addEventListener('mouseleave', function () {
+        el.style.transform = '';
+        el.style.transition = 'transform 0.45s ease';
+      });
+    }
+
+    function applyTiltToAll() {
+      document.querySelectorAll('.glass').forEach(applyTilt);
+    }
+
+    // Smooth scroll for TOC links
+    document.querySelectorAll('.guide-toc a').forEach(function (a) {
+      a.addEventListener('click', function (e) {
+        var id = a.getAttribute('href').slice(1);
+        var target = document.getElementById(id);
+        if (target) {
+          e.preventDefault();
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+  })();
+  </script>
+</body>
+</html>

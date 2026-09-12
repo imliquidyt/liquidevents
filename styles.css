@@ -1280,6 +1280,13 @@ a, button, input, select, textarea { font: inherit; }
 }
 
 .question-note { margin: .56rem 0 0; color: var(--text-main); font-size: .86rem; }
+.question-warning {
+  margin: .1rem 0 .4rem;
+  color: #FF6B6B;
+  font-size: .86rem;
+  font-weight: 800;
+  letter-spacing: .01em;
+}
 
 /* Clickable text inside application forms inherits the surrounding text color
    (instead of the browser default link/visited purple) and is marked by

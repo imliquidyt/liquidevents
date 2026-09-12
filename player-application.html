@@ -10,7 +10,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Oxanium:wght@500;600;700&family=Russo+One&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="styles.css?v=20260904a">
+  <link rel="stylesheet" href="styles.css?v=20260912a">
 </head>
 <body data-route-page="/player-application.html">
   <div class="ambient ambient-1"></div>
@@ -146,24 +146,26 @@
 
             <div class="question-card">
               <p>Have you participated in a civilization event before? If so, which ones and what character did you play?</p>
-              <p class="question-note">Provide up to 4 answers. First two are required. Each must be at least 70 words.</p>
-              <label>Answer 1 (required)
-                <textarea name="civilization_experience_1" rows="8" placeholder="Minimum 70 words..." required></textarea>
+              <p class="question-note">Provide up to 4 answers. All are optional. Each must be at least 50 words if filled.</p>
+              <label>Answer 1 (optional)
+                <textarea name="civilization_experience_1" rows="8" placeholder="Minimum 50 words if filled..."></textarea>
               </label>
-              <label>Answer 2 (required)
-                <textarea name="civilization_experience_2" rows="8" placeholder="Minimum 70 words..." required></textarea>
+              <p class="question-warning">Leaving this blank is highly discouraged, as it lowers your chances of acceptance.</p>
+              <label>Answer 2 (optional)
+                <textarea name="civilization_experience_2" rows="8" placeholder="Minimum 50 words if filled..."></textarea>
               </label>
+              <p class="question-warning">Leaving this blank is highly discouraged, as it lowers your chances of acceptance.</p>
               <label>Answer 3 (optional)
-                <textarea name="civilization_experience_3" rows="8" placeholder="Minimum 70 words if filled..."></textarea>
+                <textarea name="civilization_experience_3" rows="8" placeholder="Minimum 50 words if filled..."></textarea>
               </label>
               <label>Answer 4 (optional)
-                <textarea name="civilization_experience_4" rows="8" placeholder="Minimum 70 words if filled..."></textarea>
+                <textarea name="civilization_experience_4" rows="8" placeholder="Minimum 50 words if filled..."></textarea>
               </label>
             </div>
 
             <div class="question-card">
               <label>What kind of character are you looking to play in this event?
-                <textarea name="character_type" rows="8" placeholder="Minimum 150 words..." required></textarea>
+                <textarea name="character_type" rows="8" placeholder="Minimum 100 words..." required></textarea>
               </label>
             </div>
 
@@ -192,7 +194,7 @@
 
             <div class="question-card">
               <label>What appeals to you in civ events?
-                <textarea name="civ_appeals" rows="8" placeholder="Minimum 75 words..." required></textarea>
+                <textarea name="civ_appeals" rows="8" placeholder="Minimum 40 words..." required></textarea>
               </label>
             </div>
 
@@ -225,13 +227,13 @@
 
             <div class="question-card">
               <label>If you were elected as a leader, what would be your approach?
-                <textarea name="leader_approach" rows="8" placeholder="Minimum 90 words..." required></textarea>
+                <textarea name="leader_approach" rows="8" placeholder="Minimum 50 words..." required></textarea>
               </label>
             </div>
 
             <div class="question-card">
               <label>What would you do if your best friend betrayed you?
-                <textarea name="betrayal_response" rows="8" placeholder="Minimum 70 words..." required></textarea>
+                <textarea name="betrayal_response" rows="8" placeholder="Minimum 50 words..." required></textarea>
               </label>
             </div>
 

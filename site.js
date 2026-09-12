@@ -1151,17 +1151,17 @@
   }
 
   const PLAYER_WORD_COUNT_FIELDS = Object.freeze([
-    { name: "civilization_experience_1", label: "Past Experience (Answer 1)", required: true, minWords: 70 },
-    { name: "civilization_experience_2", label: "Past Experience (Answer 2)", required: true, minWords: 70 },
-    { name: "civilization_experience_3", label: "Past Experience (Answer 3)", required: false, minWords: 70 },
-    { name: "civilization_experience_4", label: "Past Experience (Answer 4)", required: false, minWords: 70 },
-    { name: "character_type", label: "Character type", required: true, minWords: 150 },
+    { name: "civilization_experience_1", label: "Past Experience (Answer 1)", required: false, minWords: 50 },
+    { name: "civilization_experience_2", label: "Past Experience (Answer 2)", required: false, minWords: 50 },
+    { name: "civilization_experience_3", label: "Past Experience (Answer 3)", required: false, minWords: 50 },
+    { name: "civilization_experience_4", label: "Past Experience (Answer 4)", required: false, minWords: 50 },
+    { name: "character_type", label: "Character type", required: true, minWords: 100 },
     { name: "major_lore_event", label: "Major lore event", required: true, minWords: 100 },
     { name: "acceptance_reason", label: "Why accept you", required: true, minWords: 50 },
-    { name: "civ_appeals", label: "Civ event appeal", required: true, minWords: 75 },
+    { name: "civ_appeals", label: "Civ event appeal", required: true, minWords: 40 },
     { name: "playstyle", label: "Playstyle", required: true, minWords: 30 },
-    { name: "leader_approach", label: "Leader approach", required: true, minWords: 90 },
-    { name: "betrayal_response", label: "Betrayal response", required: true, minWords: 70 },
+    { name: "leader_approach", label: "Leader approach", required: true, minWords: 50 },
+    { name: "betrayal_response", label: "Betrayal response", required: true, minWords: 50 },
     { name: "story_arc_fallback", label: "Story arc fallback", required: true, minWords: 40 }
   ]);
 

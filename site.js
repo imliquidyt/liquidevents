@@ -1253,7 +1253,7 @@
     const form = document.getElementById("playerApplicationForm");
     const submitButton = document.getElementById("playerSubmitBtn");
     const submitMessage = document.getElementById("playerSubmitMessage");
-    const playerApplicationsOpen = true;
+    const playerApplicationsOpen = false;
 
     if (!startButton || !messageNode || !formWrap || !form || !submitButton || !submitMessage) {
       return;

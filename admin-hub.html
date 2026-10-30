@@ -605,17 +605,22 @@
           <span class="hub-btn-arrow" id="arrowSotm">↓</span>
         </button>
 
-        <!-- 5–9: Coming Soon -->
-        <button class="hub-btn" disabled>
-          <span class="hub-btn-icon">🔒</span>
-          <span class="hub-btn-title">Coming Soon</span>
-          <span class="hub-btn-desc">This section is not yet available.</span>
+        <!-- 5: Management Panel -->
+        <button class="hub-btn" onclick="window.location.href='/#management-panel'">
+          <span class="hub-btn-icon">⚙️</span>
+          <span class="hub-btn-title">Management Panel</span>
+          <span class="hub-btn-desc">Bot settings, channels, roles, automod and status. Managers and owners.</span>
+          <span class="hub-btn-arrow">→</span>
         </button>
-        <button class="hub-btn" disabled>
-          <span class="hub-btn-icon">🔒</span>
-          <span class="hub-btn-title">Coming Soon</span>
-          <span class="hub-btn-desc">This section is not yet available.</span>
+
+        <!-- 6: Moderation Panel -->
+        <button class="hub-btn" onclick="window.location.href='/#moderation-panel'">
+          <span class="hub-btn-icon">🛡️</span>
+          <span class="hub-btn-title">Moderation Panel</span>
+          <span class="hub-btn-desc">Recent moderation cases, automod actions and moderator notes.</span>
+          <span class="hub-btn-arrow">→</span>
         </button>
+
         <button class="hub-btn" disabled>
           <span class="hub-btn-icon">🔒</span>
           <span class="hub-btn-title">Coming Soon</span>
@@ -680,7 +685,7 @@
     </div>
   </footer>
 
-  <script src="site.js?v=20260912a"></script>
+  <script src="site.js?v=20261029a"></script>
   <script>
   // ================================================================
   //  Admin Hub — auth + leaderboard + SOTM

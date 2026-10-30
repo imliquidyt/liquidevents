@@ -22,6 +22,8 @@
     "#review": "/index.html",
     "#290348": "/index.html",
     "#admin-hub": "/admin-hub.html",
+    "#management-panel": "/management-panel.html",
+    "#moderation-panel": "/moderation-panel.html",
     "#staff-guide": "/staff-guide.html"
   });
   const PAGE_TO_HASH_ROUTE = Object.freeze({
@@ -32,6 +34,8 @@
     "/staff-application.html": "#staff",
     "/player-application.html": "#player",
     "/admin-hub.html": "#admin-hub",
+    "/management-panel.html": "#management-panel",
+    "/moderation-panel.html": "#moderation-panel",
     "/staff-guide.html": "#staff-guide"
   });
 
@@ -1253,7 +1257,7 @@
     const form = document.getElementById("playerApplicationForm");
     const submitButton = document.getElementById("playerSubmitBtn");
     const submitMessage = document.getElementById("playerSubmitMessage");
-    const playerApplicationsOpen = false;
+    const playerApplicationsOpen = true;
 
     if (!startButton || !messageNode || !formWrap || !form || !submitButton || !submitMessage) {
       return;

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <link rel="icon" type="image/png" href="liquidicon.png">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Liquid Events | Moderation Panel</title>
+  <meta name="description" content="Moderation cases and notes for the Liquid Events moderation team.">
+  <script>document.documentElement.classList.add('js');history.replaceState(null,'','/#moderation-panel');</script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700&family=Oxanium:wght@500;600;700;800&family=Russo+One&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css?v=20260519d">
+  <link rel="stylesheet" href="panel.css?v=20261029a">
+</head>
+<body data-route-page="/moderation-panel.html">
+  <div class="ambient ambient-1"></div>
+  <div class="ambient ambient-2"></div>
+
+  <header class="topbar">
+    <div class="container topbar-inner">
+      <a class="brand" href="/#home">
+        <img src="liquidicon.png" alt="Liquid Events logo">
+        <span>Liquid Events</span>
+      </a>
+      <nav class="nav">
+        <a href="https://www.liquidmc.net">Home</a>
+        <a href="/#home" data-transition>Events</a>
+        <a href="https://store.liquidmc.net">Store</a>
+      </nav>
+      <div class="top-actions">
+        <a class="btn btn-small btn-secondary" href="https://discord.gg/liquidmc" target="_blank" rel="noopener noreferrer">Discord</a>
+        <a class="btn btn-small btn-secondary" href="/#admin-hub" data-transition>Admin Hub</a>
+      </div>
+    </div>
+  </header>
+
+  <main id="panelRoot"><p class="pn-loading">Loading…</p></main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <p>Liquid Events</p>
+      <p><span id="year"></span> Minecraft Civilization Experiments</p>
+    </div>
+  </footer>
+
+  <script src="site.js?v=20261029a"></script>
+  <script src="panel-common.js?v=20261029a"></script>
+  <script src="moderation-panel.js?v=20261029a"></script>
+</body>
+</html>

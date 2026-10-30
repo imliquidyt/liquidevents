@@ -9,7 +9,7 @@
   // Shown above the danger zone and again in a confirmation before one of those settings is saved or reset.
   // Replace this text with your own warning.
   const DANGER_WARNING =
-    "Warning: these settings decide who has power over the bot and the website panels. A wrong value can lock people out or give the wrong people access.";
+    "Warning: Dangerous settings. Make sure you have permission from either Liquid or Niels to change these";
 
   const ROUTE = "#management-panel";
   const root = document.getElementById("panelRoot");
